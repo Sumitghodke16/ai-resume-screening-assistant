@@ -1,11 +1,15 @@
 from typing import List, Literal
+import os
 
 from pydantic import BaseModel
+
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
+
 from langchain_ollama import ChatOllama
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 
 # ============================================================
@@ -123,17 +127,29 @@ def create_retriever(vectorstore, k=12):
 
 
 # ============================================================
-# 8. CREATE LOCAL LLM
+# 8. CREATE LLM
 # ============================================================
 
-def create_llm():
+def get_llm():
+    """
+    Use Gemini when GOOGLE_API_KEY is available.
+    Otherwise use local Ollama with Llama 3.2.
+    """
 
-    llm = ChatOllama(
+    google_api_key = os.getenv("GOOGLE_API_KEY")
+
+    if google_api_key:
+
+        return ChatGoogleGenerativeAI(
+            model="gemini-2.5-flash-lite",
+            temperature=0,
+            google_api_key=google_api_key,
+        )
+
+    return ChatOllama(
         model="llama3.2:3b",
-        temperature=0
+        temperature=0,
     )
-
-    return llm
 
 
 # ============================================================
@@ -252,10 +268,9 @@ STRICT RULES:
 # ============================================================
 
 def validate_requirement_status(evaluation, context):
-
     """
     Performs a lightweight deterministic check for obvious
-    evidence that the small local LLM may have missed.
+    evidence that the LLM may have missed.
 
     This is NOT replacing RAG or the LLM.
     It acts as a safety check for clear resume evidence.
@@ -539,7 +554,7 @@ Find resume evidence relevant to these requirements.
     # Create LLM
     # --------------------------------------------------------
 
-    llm = create_llm()
+    llm = get_llm()
 
     # --------------------------------------------------------
     # Structured output
@@ -624,6 +639,7 @@ Find resume evidence relevant to these requirements.
         "context": context
     }
 
+
 # ============================================================
 # 14. SCREEN MULTIPLE RESUMES
 # ============================================================
@@ -645,16 +661,22 @@ def screen_multiple_resumes(
             )
 
             results.append({
+
                 "pdf_path": pdf_path,
+
                 "success": True,
+
                 "result": result
             })
 
         except Exception as e:
 
             results.append({
+
                 "pdf_path": pdf_path,
+
                 "success": False,
+
                 "error": str(e)
             })
 
