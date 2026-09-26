@@ -10,3 +10,5 @@ python-dotenv
 pydantic
 langchain-huggingface
 sentence-transformers
+langchain-ollama
+langchain-google-genai
