@@ -17,7 +17,7 @@
 
 ### 🚀 Try the AI Resume Screening Assistant
 
-👉 **[Launch Live Web App](https://ai-resume-screening-assistant-t2cpumxj743ghxpkfgsem.streamlit.app/)**
+👉 **[Launch Live Web App](https://ai-resume-screening-assistant-t2cpumxj743ghxpkkfgsem.streamlit.app/)**
 
 The application is built with **Streamlit** and provides an interactive interface for uploading resumes and evaluating candidates against a Job Description.
 
