@@ -91,47 +91,6 @@ The final evaluation provides a structured overview of the candidate, including 
 
 ---
 
-## 🔄 Complete Application Flow
-
-```text
-┌──────────────────────────────┐
-│      🏠 Application Home     │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│   📝 Enter Job Description   │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│      📄 Upload Resumes       │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│     🔍 Screen Candidates     │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│      📊 Match Evaluation     │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│   📋 Requirement Evidence    │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│    👤 Candidate Summary      │
-│    💪 Strengths              │
-│    ⚠️ Weaknesses             │
-│    🎯 Recommendation         │
-└──────────────────────────────┘
-
-
 
 # 📌 Table of Contents
 
@@ -260,6 +219,48 @@ The primary objective is to build an AI-powered Resume Screening Assistant that 
 - Display results through a Streamlit interface
 
 ---
+
+## 🔄 Complete Application Flow
+
+```text
+┌──────────────────────────────┐
+│      🏠 Application Home     │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│   📝 Enter Job Description   │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│      📄 Upload Resumes       │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│     🔍 Screen Candidates     │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│      📊 Match Evaluation     │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│   📋 Requirement Evidence    │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│    👤 Candidate Summary      │
+│    💪 Strengths              │
+│    ⚠️ Weaknesses             │
+│    🎯 Recommendation         │
+└──────────────────────────────┘
+
+
 
 # 🧠 What Does This Application Do?
 
